@@ -1,0 +1,53 @@
+<!-- <apirequest.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello world
+        <button id = "dataBtn">data bhejdo</button>
+    </h1>
+
+    <h2 class="displayData" id="displayData"></h2>
+</body>
+
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText);
+            console.log(data);
+            // Display the data
+            document.getElementById('displayData').innerHTML = JSON.stringify(data, null, 2);
+        } else {
+            console.error("Error fetching data");
+        }
+    };
+   document.getElementById('dataBtn').addEventListener('click', function() {
+        xhr.send();
+    });
+
+    //lets implement this.responsetext in a better way
+  
+    const xhr2 = new XMLHttpRequest();
+    xhr2.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+    xhr2.onload = function() {
+        if (xhr2.status === 200) {
+            const data = JSON.parse(xhr2.responseText);
+            console.log(data);
+            // Display the data
+            document.getElementById('displayData').innerHTML = JSON.stringify(data, null, 2);
+        } else {
+            console.error("Error fetching data");
+        }
+    });
+        
+     
+    
+</script>
+</html>
